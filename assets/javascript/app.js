@@ -6,12 +6,13 @@ $("#add-gif").on("click", function(event){
 	topics.push(userInput);
 	console.log(topics);
 	$("#searchBar").val("");
+	$(".buttonsDisplay").empty();
 	displayButtons();
 
 })
 function displayButtons(){
 	for(i = 0; i < topics.length; i++){
-		$(".buttonsDisplay").empty();
+
 		let gifButton = $("<button>");
           gifButton.addClass("gif");
           gifButton.attr("data-name", topics[i]);
@@ -19,15 +20,26 @@ function displayButtons(){
           $(".buttonsDisplay").append(gifButton);
         }
       }
+	function displayGif(){
 
-function displayGif(){
+  		let gif = $(".gif").attr("data-name");
+  		let key = "klPo6zVIqSFJBs82gW1NEQAWIL7WaKax";
+  		let queryURL = "https://api.giphy.com/v1/gifs/search?" + "api_key=" + key + "&q=" + gif + "&limit=25&offset=0&rating=G&lang=en"
 
-	let gif = $(this).attr("data-name");
-	let queryURL =
-
-	$.ajax({
-		 url: queryURL,
-		 method: "GET"
-	   }).then(function(response) {
+  		$.ajax({
+  			 url: queryURL,
+  			 method: "GET"
+  		   }).then(function(response) {
+  			   console.log(response);
+			   for (var j = 0; j < response.data.length; j++) {
+			   let gifImage = $("<img>").attr("src", response.data[j].images.fixed_height.url);
+			   let gifView = $("<div>");
+			   gifView.append(gifImage);
+			   $(".gifs").prepend(gifView);
+		   }
+  	})
+  	}
+$(".gif").on("click", function(){
+	$(".gifs").empty();
+	displayGif();
 })
-}
