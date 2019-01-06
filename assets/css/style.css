@@ -1,0 +1,21 @@
+body{
+	background: #20B2AA;
+}
+h1{
+	color: black;
+	background: blue;
+	width: 20%;
+	text-align: center;
+	border: 10px solid #1E90FF;
+	font-family: 'Muli', sans-serif;
+}
+.gif:hover{
+	color: blue;
+	background: #1E90FF
+
+}
+label{
+	color: darkblue;
+	font-size: 30px;
+	font-family: 'Muli', sans-serif;
+}
