@@ -23,7 +23,7 @@ function displayButtons(){
 		let gif = $(this).attr("data-name");
 		let state = $(this).attr("data-state");
 		let key = "klPo6zVIqSFJBs82gW1NEQAWIL7WaKax";
-		let queryURL = "https://api.giphy.com/v1/gifs/search?" + "api_key=" + key + "&q=" + gif + "&limit=25&offset=0&rating=G&lang=en"
+		let queryURL = "https://api.giphy.com/v1/gifs/search?" + "api_key=" + key + "&q=" + gif + "&limit=25&offset=0&rating=r&lang=en"
 
 		$.ajax({
 			 url: queryURL,
@@ -38,11 +38,10 @@ function displayButtons(){
 			   gifView.append(rating);
 			   $(".gifs").prepend(gifView);
 
-											}
-										})
+										}
 									})
-
-								}
+								})
+							}
 $("reset").on("click", function(){
 	$(".buttonsDisplay").empty();
 })
